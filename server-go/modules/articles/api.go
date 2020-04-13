@@ -27,6 +27,6 @@ func ArticlePost(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	newArticle := append(articles, json)
-	c.JSON(http.StatusOK, newArticle)
+	response := append(articles, json)
+	c.JSON(http.StatusOK, response)
 }
