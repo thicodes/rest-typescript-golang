@@ -8,8 +8,9 @@ import (
 func main() {
 	router := gin.Default()
 	
-	router.GET("/articles", articles.ArticlesGet)
-	router.GET("/articlePost", articles.ArticlesPost)
+	router.GET("/articles", articles.ArticlesGetAll)
+	router.POST("/articles", articles.ArticlePost)
+	// router.GET("/articlePost", articles.ArticlesPost)
 	// r := gin.Default()
 	// r.GET("/ping", func(c *gin.Context) {
 	// 	c.JSON(200, gin.H{
