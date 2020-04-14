@@ -2,14 +2,17 @@ package main
 
 import (
 				"github.com/gin-gonic/gin"
-				"rest-typescript-golang/modules/articles"
+				"rest-typescript-golang/api"
+				"rest-typescript-golang/database"
 )
 
 func main() {
+	database.ConnectMongo()
+	
 	router := gin.Default()
 	
-	router.GET("/articles", articles.ArticlesGetAll)
-	router.POST("/articles", articles.ArticlePost)
+	// router.GET("/articles", articles.ArticlesGetAll)
+	router.POST("/articles", api.ArticlePost)
 	// router.GET("/articlePost", articles.ArticlesPost)
 	// r := gin.Default()
 	// r.GET("/ping", func(c *gin.Context) {
