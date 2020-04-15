@@ -21,7 +21,7 @@ const app = express();
   app.post('/api/todos', todoPost);
   app.delete('/api/todos/:id', todoDelete);
 
-  app.listen(3000, () => {
+  app.listen(5000, () => {
     console.log('Server started');
   });
 })();
