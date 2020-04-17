@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery, useMutation, queryCache, MutateFunction, ReactQueryProviderConfig } from 'react-query';
+import { useQuery, useMutation, queryCache, MutateFunction, MutationOptions, MutationFunction } from 'react-query';
 import { Text } from 'rebass';
 import { Formik, Form, FormikHelpers } from 'formik';
 import TextField from '../form/TextField';
@@ -11,6 +11,10 @@ export type TodoType = {
   isCompleted?: boolean;
 };
 
+type TodoCreateMutationResponse = Array<TodoType>;
+type TodoCreateMutationVariables = string;
+type MutateConfig = MutationOptions<TodoCreateMutationResponse, TodoCreateMutationVariables>;
+
 type Values = {
   task: string;
 };
@@ -20,7 +24,7 @@ const TodoList = () => {
     task: '',
   };
   const onSubmit = (values: Values, formikAction: FormikHelpers<Values>) => {
-    const config: ReactQueryProviderConfig = {
+    const config: MutateConfig = {
       onMutate: () => {
         const previousValue = queryCache.getQueryData('todos');
 
@@ -37,11 +41,11 @@ const TodoList = () => {
       },
       onSettled: () => queryCache.refetchQueries('todos'),
     };
-    todoCreate<MutateFunction>(values.task, config);
+    todoCreate(values.task, config);
   };
   const fetchTodo = async () => await fetch('http://localhost:5000/api/todos');
   const { status, data } = useQuery('todos', fetchTodo);
-  const [todoCreate] = useMutation((task) =>
+  const [todoCreate] = useMutation<TodoCreateMutationResponse, TodoCreateMutationVariables>((task) =>
     fetch('http://localhost:5000/api/todos', { method: 'POST', body: { task } }),
   );
   const isLoading: boolean = !!(status === 'loading');
