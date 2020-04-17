@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery, useMutation, queryCache, MutateFunction, MutateOptions } from 'react-query';
+import { useQuery, useMutation, queryCache, MutateFunction, ReactQueryProviderConfig } from 'react-query';
 import { Text } from 'rebass';
 import { Formik, Form, FormikHelpers } from 'formik';
 import TextField from '../form/TextField';
@@ -20,7 +20,7 @@ const TodoList = () => {
     task: '',
   };
   const onSubmit = (values: Values, formikAction: FormikHelpers<Values>) => {
-    const config: MutateOptions = {
+    const config: ReactQueryProviderConfig = {
       onMutate: () => {
         const previousValue = queryCache.getQueryData('todos');
 
