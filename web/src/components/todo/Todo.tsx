@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery, useMutation, queryCache } from 'react-query';
+import { useQuery, useMutation, queryCache, MutateFunction, MutateOptions } from 'react-query';
 import { Text } from 'rebass';
 import { Formik, Form, FormikHelpers } from 'formik';
 import TextField from '../form/TextField';
@@ -11,7 +11,7 @@ export type TodoType = {
   isCompleted?: boolean;
 };
 
-type FormikValues = {
+type Values = {
   task: string;
 };
 
@@ -19,8 +19,8 @@ const TodoList = () => {
   const initialValues = {
     task: '',
   };
-  const onSubmit = (values: FormikValues, formikAction) => {
-    const config = {
+  const onSubmit = (values: Values, formikAction: FormikHelpers<Values>) => {
+    const config: MutateOptions = {
       onMutate: () => {
         const previousValue = queryCache.getQueryData('todos');
 
@@ -31,15 +31,13 @@ const TodoList = () => {
 
         return previousValue;
       },
-      //@ts-ignore
       onError: (err, variables, previousValue) => queryCache.setQueryData('todos', previousValue),
       onSuccess: () => {
         formikAction.resetForm();
       },
       onSettled: () => queryCache.refetchQueries('todos'),
     };
-    // @ts-ignore
-    todoCreate(values.task, config);
+    todoCreate<MutateFunction>(values.task, config);
   };
   const fetchTodo = async () => await fetch('http://localhost:5000/api/todos');
   const { status, data } = useQuery('todos', fetchTodo);
