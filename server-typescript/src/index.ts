@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import { connectDatabase } from './database';
 import { todoGetAll, todoPost, todoDelete } from './modules';
+import { REST_PORT } from './config';
 
 const app = express();
 
@@ -21,7 +22,7 @@ const app = express();
   app.post('/api/todos', todoPost);
   app.delete('/api/todos/:id', todoDelete);
 
-  app.listen(5000, () => {
-    console.log('Server started');
+  app.listen(REST_PORT, () => {
+    console.log(`Server started on port ${REST_PORT}`);
   });
 })();

@@ -862,6 +862,13 @@
   dependencies:
     "@types/express" "*"
 
+"@types/dotenv-safe@^8.1.0":
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/@types/dotenv-safe/-/dotenv-safe-8.1.0.tgz#751ef7ed9875b0d2978ff0b176514cce550e08ed"
+  integrity sha512-9jrQ3T4zlDWuP0kht7UgGA9M6D1/HS8feA0OMwzZtPEGrUPU333RWvIJ+DkbzrSazhnUQAjAi5PB69/JsMqShg==
+  dependencies:
+    dotenv "^8.2.0"
+
 "@types/express-serve-static-core@*":
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.4.tgz#157c79c2d28b632d6418497c57c93185e392e444"
@@ -1991,6 +1998,18 @@ domain-browser@^1.1.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
   integrity sha512-jnjyiM6eRyZl2H+W8Q/zLMA481hzi0eszAaBUzIVnmYVDBbnLxVNnfu1HgEBvCbL+71FrxMl3E6lpKH7Ge3OXA==
+
+dotenv-safe@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/dotenv-safe/-/dotenv-safe-8.2.0.tgz#8d548c7318a62c09a66c4dc8c31864cc007c78ba"
+  integrity sha512-uWwWWdUQkSs5a3mySDB22UtNwyEYi0JtEQu+vDzIqr9OjbDdC2Ip13PnSpi/fctqlYmzkxCeabiyCAOROuAIaA==
+  dependencies:
+    dotenv "^8.2.0"
+
+dotenv@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
+  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
 
 duplexify@^3.4.2, duplexify@^3.6.0:
   version "3.7.1"
