@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box } from 'rebass';
-import { TodoType } from './Todo';
+import { TodoType, QueryResponse } from './Todo';
 import TodoListItem from './TodoListItem';
 import Spinner from '../ui/Spinner';
 
 type Props = {
   isLoading: boolean;
-  data: Array<TodoType>;
+  data: QueryResponse;
 };
 
 const TodoList = ({ isLoading, data }: Props) => {

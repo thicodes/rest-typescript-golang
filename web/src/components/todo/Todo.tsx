@@ -11,9 +11,9 @@ export type TodoType = {
   isCompleted?: boolean;
 };
 
-type TodoCreateMutationResponse = Array<TodoType>;
+export type QueryResponse = Array<TodoType>;
 type TodoCreateMutationVariables = string;
-type MutateConfig = MutationOptions<TodoCreateMutationResponse, TodoCreateMutationVariables>;
+type MutateConfig = MutationOptions<QueryResponse, TodoCreateMutationVariables>;
 
 type Values = {
   task: string;
@@ -45,7 +45,7 @@ const TodoList = () => {
   };
   const fetchTodo = async () => await fetch('http://localhost:5000/api/todos');
   const { status, data } = useQuery('todos', fetchTodo);
-  const [todoCreate] = useMutation<TodoCreateMutationResponse, TodoCreateMutationVariables>((task) =>
+  const [todoCreate] = useMutation<QueryResponse, TodoCreateMutationVariables>((task) =>
     fetch('http://localhost:5000/api/todos', { method: 'POST', body: { task } }),
   );
   const isLoading: boolean = !!(status === 'loading');
